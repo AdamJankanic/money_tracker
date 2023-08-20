@@ -20,28 +20,20 @@ import {
 
 const categories = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "food",
+    label: "Food",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: "cinema",
+    label: "Cinema",
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
+    value: "games",
+    label: "Games",
   },
 ];
 
-export function ComboBox() {
+export function ComboBox({ onCategoryChange }: { onCategoryChange: Function }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -70,6 +62,7 @@ export function ComboBox() {
                 key={category.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue);
+                  onCategoryChange(currentValue);
                   setOpen(false);
                 }}
               >
